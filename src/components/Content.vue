@@ -1,6 +1,8 @@
 <template>
   <main>
-    <Album v-for="(album, index) in albums" :key="index" :details="album" />
+    <div v-for="(album, index) in albums" :key="index">
+      <Album :details="album" />
+    </div>
   </main>
 </template>
 
