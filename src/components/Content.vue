@@ -1,8 +1,10 @@
 <template>
   <main>
-    <div v-for="(album, index) in albums" :key="index">
-      <Album :details="album" />
-    </div>
+    <section class="d-flex justify-content-center flex-wrap w-75 m-auto">
+      <div v-for="(album, index) in albums" :key="index">
+        <Album :details="album" />
+      </div>
+    </section>
   </main>
 </template>
 
@@ -37,7 +39,7 @@ export default {
 <style lang="scss" scoped>
 @import "@/style/commons.scss";
 main {
-  height: calc(100vh - 50px);
   background-color: #1e2d3b;
+  padding: 30px 0;
 }
 </style>
