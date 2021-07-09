@@ -1,7 +1,12 @@
 <template>
-  <select class="form-select-sm" aria-label="Default select example">
-    <option selected value="all">All Genres</option>
-    <option v-for="(genre, index) in genres" :key="index" value="genre">
+  <select
+    class="form-select-sm"
+    aria-label="seleziona generi"
+    v-model="selectedGenre"
+    @change="$emit('emitGenre', selectedGenre)"
+  >
+    <option selected value="All Genres">All genres</option>
+    <option v-for="(genre, index) in genres" :key="index" :value="genre">
       {{ genre }}
     </option>
   </select>
@@ -13,15 +18,19 @@ export default {
   props: ["albums"],
   data() {
     return {
-      genres: [],
+      selectedGenre: "All Genres",
     };
   },
-  created() {
-    for (const elem of this.albums) {
-      if (!this.genres.includes(elem.genre)) {
-        this.genres.push(elem.genre);
+  computed: {
+    genres() {
+      let genres = [];
+      for (const elem of this.albums) {
+        if (!genres.includes(elem.genre)) {
+          genres.push(elem.genre);
+        }
       }
-    }
+      return genres;
+    },
   },
 };
 </script>

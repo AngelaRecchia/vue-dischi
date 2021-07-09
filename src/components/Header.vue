@@ -1,7 +1,7 @@
 <template>
   <header class="w-100 d-flex align-items-center justify-content-between px-3">
     <img src="../assets/logo.png" alt="logo spotify" />
-    <Select :albums="albums" />
+    <Select :albums="albums" @emitGenre="emitToApp" />
   </header>
 </template>
 
@@ -11,6 +11,11 @@ export default {
   components: { Select },
   name: "Header",
   props: ["albums"],
+  methods: {
+    emitToApp(genre) {
+      this.$emit("emitToApp", genre);
+    },
+  },
 };
 </script>
 

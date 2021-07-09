@@ -1,7 +1,7 @@
 <template>
   <div id="app">
-    <Header :albums="albums" />
-    <Content :albums="albums" />
+    <Header :albums="albums" @emitToApp="getGenreToShow" />
+    <Content :albums="albumsToShow" />
   </div>
 </template>
 
@@ -15,6 +15,7 @@ export default {
     return {
       urlAPI: "https://flynn.boolean.careers/exercises/api/array/music",
       albums: "",
+      genreToShow: "All Genres",
     };
   },
   created() {
@@ -25,6 +26,17 @@ export default {
       axios.get(this.urlAPI).then((result) => {
         this.albums = result.data.response;
       });
+    },
+    getGenreToShow(genre) {
+      this.genreToShow = genre;
+    },
+  },
+  computed: {
+    albumsToShow() {
+      if (this.genreToShow == "All Genres") {
+        return this.albums;
+      } else
+        return this.albums.filter((album) => album.genre == this.genreToShow);
     },
   },
   components: {
