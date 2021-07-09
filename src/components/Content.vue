@@ -1,7 +1,14 @@
 <template>
   <main>
-    <section class="d-flex justify-content-center flex-wrap w-75 m-auto">
-      <div v-for="(album, index) in albums" :key="index">
+    <section
+      class="
+        w-75
+        m-auto
+        row row-cols-1 row-cols-sm-2 row-cols-md-4 row-cols-lg-5
+        gy-3
+      "
+    >
+      <div v-for="(album, index) in albums" :key="index" class="col">
         <Album :details="album" />
       </div>
     </section>

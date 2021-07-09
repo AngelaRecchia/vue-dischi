@@ -20,12 +20,10 @@ export default {
 <style lang="scss" scoped>
 .box {
   background-color: #2e3a46;
-  height: 300px;
-  width: 150px;
+  height: 100%;
   padding: 15px;
-  margin: 10px 15px;
   img {
-    width: 120px;
+    width: 100%;
   }
   .author {
     color: white;
