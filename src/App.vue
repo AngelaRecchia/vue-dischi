@@ -16,6 +16,7 @@ export default {
       urlAPI: "https://flynn.boolean.careers/exercises/api/array/music",
       albums: "",
       genreToShow: "All Genres",
+      loading: true,
     };
   },
   created() {
@@ -24,8 +25,9 @@ export default {
   methods: {
     getAlbums() {
       axios.get(this.urlAPI).then((result) => {
-        this.albums = result.data.response;
+        this.albums = result.data.response.sort((a, b) => a.year - b.year);
       });
+      this.loading = false;
     },
     getGenreToShow(genre) {
       this.genreToShow = genre;

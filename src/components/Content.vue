@@ -1,6 +1,7 @@
 <template>
   <main>
     <section
+      v-if="!loading"
       class="
         w-75
         m-auto
@@ -12,17 +13,20 @@
         <Album :details="album" />
       </div>
     </section>
+    <Loader v-else />
   </main>
 </template>
 
 <script>
 import Album from "./Album.vue";
+import Loader from "./Loader.vue";
 export default {
   name: "Content",
   components: {
     Album,
+    Loader,
   },
-  props: ["albums"],
+  props: ["albums", "loading"],
 };
 </script>
 
